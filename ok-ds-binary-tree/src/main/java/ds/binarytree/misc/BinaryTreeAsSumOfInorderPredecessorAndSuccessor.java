@@ -15,13 +15,17 @@ public class BinaryTreeAsSumOfInorderPredecessorAndSuccessor {
     }
 
     public void replace() {
+        // List containing predecessor and successor nodes
         List<Integer> ps = new ArrayList<>();
+        // Required during summing up at start
         ps.add(0);
         createPS(root, ps);
+        // Required during summing up at the end
         ps.add(0);
         modifyPSWithSum(root, ps);
     }
 
+    // Use inorder traversal to store predecessor and successor nodes
     private void createPS(Node temp, List<Integer> ps) {
         if (temp == null) {
             return;
@@ -32,8 +36,9 @@ public class BinaryTreeAsSumOfInorderPredecessorAndSuccessor {
         createPS(temp.right, ps);
     }
 
+    // Tracks the cound from the ps list
     static int count = 1;
-
+    // Sum up using inorder traversal
     private void modifyPSWithSum(Node temp, List<Integer> ps) {
         if (temp == null) {
             return;

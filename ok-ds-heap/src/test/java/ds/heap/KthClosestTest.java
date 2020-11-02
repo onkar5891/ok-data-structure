@@ -10,8 +10,8 @@ public class KthClosestTest {
 
     @Test
     public void shouldFindKClosestElements() {
-        assertArrayEquals(new int[]{4, 5, 6}, kc.findKthClosestElementsToX(new int[]{2, 4, 5, 6, 9}, 3, 6));
-        assertArrayEquals(new int[]{1, 2, 3, 4}, kc.findKthClosestElementsToX(new int[]{1, 2, 3, 4, 5}, 4, 3));
+        assertArrayEquals(new int[]{4, 5, 6}, kc.findKClosestElementsToX(new int[]{2, 4, 5, 6, 9}, 3, 6));
+        assertArrayEquals(new int[]{1, 2, 3, 4}, kc.findKClosestElementsToX(new int[]{1, 2, 3, 4, 5}, 4, 3));
     }
 
     @Test

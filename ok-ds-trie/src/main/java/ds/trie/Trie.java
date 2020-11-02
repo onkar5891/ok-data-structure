@@ -4,19 +4,19 @@ public class Trie {
     private final Node root = new Node();
 
     public void insert(String key) {
-        Node node = root;
+        Node trie = root;
 
         for (int i = 0; i < key.length(); i++) {
             int index = key.charAt(i) - 'a';
-            if (node.nodes[index] == null) {
-                node.nodes[index] = new Node();
+            if (trie.nodes[index] == null) {
+                trie.nodes[index] = new Node();
             }
             // Go to the next level
-            node = node.nodes[index];
+            trie = trie.nodes[index];
         }
 
-        // Mark last node as leaf
-        node.isEndOfWord = true;
+        // Mark last trie node as leaf
+        trie.isEndOfWord = true;
     }
 
     public boolean search(String key) {

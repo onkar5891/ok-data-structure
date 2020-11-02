@@ -80,15 +80,18 @@ public class BinaryTree {
             return;
         } else if (root == del) {
             root = null;
+            return;
         }
 
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
 
+        // Find the node to be deleted
         while (!queue.isEmpty()) {
             Node temp = queue.remove();
 
             if (nonNull(temp.left)) {
+                // Make left child null if node is found
                 if (temp.left.value == del.value) {
                     temp.left = null;
                     return;
@@ -97,6 +100,7 @@ public class BinaryTree {
                 }
             }
             if (nonNull(temp.right)) {
+                // Make right child null if node is found
                 if (temp.right.value == del.value) {
                     temp.right = null;
                     return;
@@ -116,6 +120,16 @@ public class BinaryTree {
     }
 
     public String inorderWithoutRecursion() {
-        return inOrderWithoutRecursion.traverse(root);
+        return inOrderWithoutRecursion.traverse(copy(root));
+    }
+
+    private VNode copy(Node node) {
+        if (node == null) {
+            return null;
+        }
+        VNode vn = new VNode(node.value);
+        vn.left = copy(node.left);
+        vn.right = copy(node.right);
+        return vn;
     }
 }

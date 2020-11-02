@@ -3,7 +3,7 @@ package ds.heap;
 import static java.lang.Math.abs;
 
 public class KthClosest {
-    public int[] findKthClosestElementsToX(int[] arr, int k, int x) {
+    public int[] findKClosestElementsToX(int[] arr, int k, int x) {
         int closestIndex = findClosestIndex(arr, x);
         MinHeap minHeap = new MinHeap(2 * (k - 1) + 1);
         minHeap.insert(arr[closestIndex]);

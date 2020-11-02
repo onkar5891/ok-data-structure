@@ -21,8 +21,9 @@ public class BinaryTreeTest {
         tree.insert(7);
         tree.insert(15);
         tree.insert(8);
+        tree.insert(13);
 
-        assertEquals("10, 11, 7, 15, 9, 8", tree.preorder());
+        assertEquals("10, 11, 7, 15, 9, 8, 13", tree.preorder());
         assertEquals(tree.inorder(), tree.inorderWithoutRecursion());
     }
 

@@ -52,26 +52,34 @@ public class BinarySearchTree {
         return deleteRec(root, key);
     }
 
-    private Node deleteRec(Node temp, int key) {
-        if (temp == null) {
+    private Node deleteRec(Node node, int key) {
+        if (node == null) {
             return null;
         }
 
-        if (key < temp.value) {
-            temp.left = deleteRec(temp.left, key);
-        } else if (key > temp.value) {
-            temp.right = deleteRec(temp.right, key);
+        if (key < node.value) {
+            node.left = deleteRec(node.left, key);
+        } else if (key > node.value) {
+            node.right = deleteRec(node.right, key);
         } else {
-            if (temp.left == null) {
-                return temp.right;
-            } else if (temp.right == null) {
-                return temp.left;
+            // key is found and node points to it
+
+            // Case when node has one child
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
             }
 
-            temp.value = findMin(temp.right);
-            temp.right = deleteRec(temp.right, temp.value);
+            // Case when node has both children
+            // Find the min value in right subtree
+            node.value = findMin(node.right);
+            // Delete the node with that value starting from the right subtree
+            // For this node to be deleted
+            // The recursive call will always reach the first case i.e. it will have 0 or 1 child, but not 2
+            node.right = deleteRec(node.right, node.value);
         }
-        return temp;
+        return node;
     }
 
     public int height(Node temp) {

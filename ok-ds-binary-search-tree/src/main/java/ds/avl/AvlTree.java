@@ -30,8 +30,10 @@ public class AvlTree {
             node.right = insertRec(node.right, v);
         }
 
+        // Find height
         node.height = 1 + max(height(node.left), height(node.right));
 
+        // Find the balance
         int balance = balanceFactor(node);
         node.balance = balance;
 
@@ -132,8 +134,10 @@ public class AvlTree {
             node.right = deleteRec(node.right, node.value);
         }
 
+        // Find height
         node.height = 1 + max(height(node.left), height(node.right));
 
+        // Find the balance
         int balance = balanceFactor(node);
         node.balance = balance;
 
